@@ -6,18 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} Weather</title>
     <link href="{{ url_for('static', filename='styles/style.css') }}" rel="stylesheet" />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/sun_yellow.ico') }}">
 </head>
 
 <body>
     <h1>{{ title }} Weather</h1>
-    <p>{{ status }} and {{ temp }}&deg;</p>
+    <p><img src="{{ url_for('static', filename=description_image) }}" style="width: 100px; height: 100px;">
+    {% if hot %}
+        <img src="{{ url_for('static', filename=hot) }}" style="width: 100px; height: 100px;">
+    {% elif warm %}
+        <img src="{{ url_for('static', filename=warm) }}" style="width: 100px; height: 100px;">
+    {% elif cool %}
+        <img src="{{ url_for('static', filename=cool) }}" style="width: 100px; height: 100px;">
+    {% elif cold %}
+        <img src="{{ url_for('static', filename=cold) }}" style="width: 100px; height: 100px;">
+    {% endif %}
+    </p>
+    <p>{{ status }} and {{ temp }}&deg; F</p>
     <p>Feels like {{ feels_like }}&deg;</p>
 
     <form action="/weather">
         <input type="text" name="city" id="city" placeholder="Enter a City" />
         <button type="submit">Submit</button>
     </form>
+
+    <p style="font-size: x-small; color: grey;">Creative Commons icons from www.freeicons.io</p>
 </body>
 
 </html>
