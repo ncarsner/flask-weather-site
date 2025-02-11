@@ -1,8 +1,8 @@
 import random
-import sys
+# import sys
 
 from flask import Flask, render_template, request, send_from_directory
-from waitress import serve
+# from waitress import serve
 
 import cities
 from weather import get_current_weather
