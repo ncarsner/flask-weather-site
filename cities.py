@@ -51,17 +51,14 @@ cities = {
         "Port Louis", "Port Moresby", "San Salvador", "Santa Cruz"
     ],
     "Oceania": [
-        "Sydney", "Auckland", "Brisbane", "Melbourne", "Perth", "Adelaide", "Wellington"
+        "Sydney", "Auckland", "Brisbane", "Melbourne", "Perth", "Adelaide", "Wellington", "Pohnpei",
     ],
     "Middle East": [
         "Abu Dhabi", "Doha", "Dubai", "Muscat", "Riyadh", "Manama", "Kuwait City", "Amman", "Beirut", 
         "Damascus", "Jerusalem", "Gaza", "Ramallah", "Nicosia", "Sanaa", "Baghdad", "Basra", "Erbil", 
         "Mosul", "Kirkuk", "Najaf", "Karbala", "Sulaymaniyah", "Tikrit", "Fallujah", "Samawah", 
-        "Nasiriyah", "Diwaniyah", "Kut", "Amara", "Hilla", "Baqubah", "Balad", "Samarra", "Kufa", 
-        "Zubair", "Rumaitha", "Shatrah", "Qalat Sukkar", "Suq ash Shuyukh"
+        "Nasiriyah", "Diwaniyah", "Kut", "Amara", "Al Hillah", "Baqubah", "Balad", "Samarra", "Kufa",
     ]
 }
 
 world_cities = [city for continent in cities.values() for city in continent]
-# world_cities.sort()
-# print(len(world_cities))

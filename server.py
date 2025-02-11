@@ -1,27 +1,32 @@
 import random
 
 from flask import Flask, render_template, request, send_from_directory
-# from waitress import serve
+from waitress import serve
 
 import cities
 from weather import get_current_weather
 from weather_descriptions import weather_descriptions
+import sys
 
 app = Flask(__name__)
 
-@app.route('/favicon.ico')
+
+@app.route("/favicon.ico")
 def favicon():
-    return send_from_directory('static/images', 'sun_yellow.ico', mimetype='image/vnd.microsoft.icon')
+    return send_from_directory(
+        "static/images", "sun_yellow.ico", mimetype="image/vnd.microsoft.icon"
+    )
 
 
-@app.route('/')
-@app.route('/index')
+@app.route("/")
+@app.route("/index")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
 
-@app.route('/weather')
+
+@app.route("/weather")
 def get_weather():
-    city = request.args.get('city')
+    city = request.args.get("city")
 
     # Check for empty strings or string with only spaces
     if not city.strip():
@@ -30,8 +35,8 @@ def get_weather():
     weather_data = get_current_weather(city)
 
     # City is not found by API
-    if not weather_data['cod'] == 200:
-        return render_template('city-not-found.html')
+    if not weather_data["cod"] == 200:
+        return render_template("city-not-found.html")
 
     status = weather_data["weather"][0]["description"].capitalize()
     desc_path = weather_descriptions.get(status.lower(), None)
@@ -53,8 +58,9 @@ def get_weather():
         warm=warm,
         cool=cool,
         cold=cold,
-        feels_like=f"{int(weather_data['main']['feels_like'])}"
+        feels_like=f"{int(weather_data['main']['feels_like'])}",
     )
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8000)
