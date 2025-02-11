@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>{{ title }} Weather</h1>
+    <h1>{{ title }}, {{ country }}</h1>
     <p><img src="{{ url_for('static', filename=description_image) }}" style="width: 100px; height: 100px;">
     {% if hot %}
         <img src="{{ url_for('static', filename=hot) }}" style="width: 100px; height: 100px;">
@@ -22,7 +22,7 @@
         <img src="{{ url_for('static', filename=cold) }}" style="width: 100px; height: 100px;">
     {% endif %}
     </p>
-    <p>{{ status }} and {{ temp }}&deg; F</p>
+    <p>{{ status }}, {{ temp }}&deg; F</p>
     <p>Feels like {{ feels_like }}&deg;</p>
 
     <form action="/weather">

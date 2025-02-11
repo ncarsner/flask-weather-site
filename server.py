@@ -49,8 +49,8 @@ def get_weather():
 
     return render_template(
         "weather.html",
-        # favicon=favicon(),
         title=weather_data["name"],
+        country=weather_data["sys"]["country"],
         status=status,
         description_image=desc_url,
         temp=f"{int(weather_data['main']['temp'])}",
@@ -64,3 +64,4 @@ def get_weather():
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=8000)
+    # serve(app, host="0.0.0.0", port=8000)
