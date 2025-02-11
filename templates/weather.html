@@ -10,7 +10,8 @@
 </head>
 
 <body>
-    <h1>{{ title }}, {{ country }}</h1>
+    <h1>{{ title }}</h1>
+    <h2>{{ country }}</h2>
     <p><img src="{{ url_for('static', filename=description_image) }}" style="width: 100px; height: 100px;">
     {% if hot %}
         <img src="{{ url_for('static', filename=hot) }}" style="width: 100px; height: 100px;">

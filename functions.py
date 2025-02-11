@@ -50,3 +50,33 @@ if __name__ == "__main__":
     with open("weather_descriptions.py", "w") as file:
         file.write("weather_descriptions = ")
         file.write(repr(existing_data))
+
+"""
+import time
+
+provinces = {}
+batch_size = 60
+total_processed = 0
+errored_cities = []
+
+for i in range(0, len(cities.world_cities), batch_size):
+    batch = cities.world_cities[i : i + batch_size]
+    for city in batch:
+        try:
+            country_code = get_current_weather(city)["sys"]["country"]
+            provinces[city] = country_code
+        except Exception as e:
+            errored_cities.append(city)
+            print(f"Error processing city {city}: {e}")
+        total_processed += 1
+
+    print(f"Processed {total_processed} records so far.")
+    time.sleep(60)  # Respect rate limits
+
+with open(os.path.join(os.path.dirname(__file__), "provinces.py"), "w") as f:
+    f.write(f"provinces = {provinces}")
+
+if errored_cities:
+    with open(os.path.join(os.path.dirname(__file__), "errored_cities.txt"), "w") as f:
+        f.write("\n".join(errored_cities))
+"""

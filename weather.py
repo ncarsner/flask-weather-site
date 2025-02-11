@@ -1,8 +1,9 @@
-from dotenv import load_dotenv
-from pprint import pprint
-import requests
 import os
 import random
+from pprint import pprint
+
+import requests
+from dotenv import load_dotenv
 
 import cities
 
@@ -23,6 +24,7 @@ if __name__ == "__main__":
     # Check for empty strings or string with only spaces
     if not city.strip():
         city = random.choice(cities.world_cities)
+
 
     weather_data = get_current_weather(city)
 
