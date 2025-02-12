@@ -47,6 +47,11 @@ def get_weather():
     cool = "/images/cool.png" if 40 < weather_data["main"]["feels_like"] < 58 else None
     cold = "/images/cold.png" if weather_data["main"]["feels_like"] < 40 else None
 
+    actual_temp = weather_data["main"]["temp"]
+    feels_like = weather_data["main"]["feels_like"]
+
+    feels_like = int(feels_like) if abs(actual_temp - feels_like) > 5 else None
+
     territory = weather_data["sys"]["country"]
 
     city = city.title()
@@ -67,7 +72,7 @@ def get_weather():
         warm=warm,
         cool=cool,
         cold=cold,
-        feels_like=f"{int(weather_data['main']['feels_like'])}",
+        feels_like=feels_like,
     )
 
 

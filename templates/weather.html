@@ -10,21 +10,24 @@
 </head>
 
 <body>
-    <h2>{{ title }}</h2>
-    <h3>{{ country }}</h3>
-    <p><img src="{{ url_for('static', filename=description_image) }}" style="width: 100px; height: 100px;">
+    <h3>{{ title }}</h3>
+    <h4>{{ country }}</h4>
+    <p><img src="{{ url_for('static', filename=description_image) }}" style="width: 75px; height: 75px;">
     {% if hot %}
-        <img src="{{ url_for('static', filename=hot) }}" style="width: 100px; height: 100px;">
+        <img src="{{ url_for('static', filename=hot) }}" style="width: 75px; height: 75px;">
     {% elif warm %}
-        <img src="{{ url_for('static', filename=warm) }}" style="width: 100px; height: 100px;">
+        <img src="{{ url_for('static', filename=warm) }}" style="width: 75px; height: 75px;">
     {% elif cool %}
-        <img src="{{ url_for('static', filename=cool) }}" style="width: 100px; height: 100px;">
+        <img src="{{ url_for('static', filename=cool) }}" style="width: 75px; height: 75px;">
     {% elif cold %}
-        <img src="{{ url_for('static', filename=cold) }}" style="width: 100px; height: 100px;">
+        <img src="{{ url_for('static', filename=cold) }}" style="width: 75px; height: 75px;">
     {% endif %}
     </p>
-    <p>{{ status }}, {{ temp }}&deg; F</p>
-    <p>Feels like {{ feels_like }}&deg;</p>
+    <p style="text-align: center;">{{ status }}, {{ temp }}&deg; F
+    {% if feels_like %}
+        <br>Feels like {{ feels_like }}&deg;
+    {% endif %}
+    </p>
 
     <form action="/weather">
         <input type="text" name="city" id="city" placeholder="Enter a City" />
