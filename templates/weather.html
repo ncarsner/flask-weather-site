@@ -11,7 +11,9 @@
 
 <body>
     <h3>{{ title }}</h3>
-    <h4>{{ country }}</h4>
+    {% if country %}
+        <h4>{{ country }}</h4>
+    {% endif %}
     <p><img src="{{ url_for('static', filename=description_image) }}" style="width: 75px; height: 75px;">
     {% if hot %}
         <img src="{{ url_for('static', filename=hot) }}" style="width: 75px; height: 75px;">
