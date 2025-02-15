@@ -4,6 +4,7 @@ weather_descriptions = {
     "drizzle": "drizzle.png",
     "few clouds": "broken_clouds.png",
     "haze": "haze.png",
+    "heavy intensity rain": "heavy_showers.png",
     "light intensity drizzle": "drizzle.png",
     "light intensity shower rain": "light_showers.png",
     "light rain": "light_rain.png",
