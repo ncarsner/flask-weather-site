@@ -2,7 +2,7 @@ import random
 # import sys
 
 from flask import Flask, render_template, request, send_from_directory
-# from waitress import serve
+from waitress import serve
 
 import cities
 from weather import get_current_weather
@@ -77,5 +77,8 @@ def get_weather():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=8000)
-    # serve(app, host="0.0.0.0", port=8000)
+    # Development
+    # app.run(debug=True, host="0.0.0.0", port=8000)
+
+    # Production WSGI
+    serve(app, host="0.0.0.0", port=8000)
