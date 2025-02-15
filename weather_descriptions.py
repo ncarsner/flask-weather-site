@@ -3,6 +3,7 @@ weather_descriptions = {
     "clear sky": "clear_sky.png",
     "drizzle": "drizzle.png",
     "few clouds": "broken_clouds.png",
+    "fog": "fog.png",
     "haze": "haze.png",
     "heavy intensity rain": "heavy_showers.png",
     "light intensity drizzle": "drizzle.png",
