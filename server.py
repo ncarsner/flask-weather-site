@@ -77,8 +77,10 @@ def get_weather():
 
 
 if __name__ == "__main__":
-    # Development
-    # app.run(debug=True, host="0.0.0.0", port=8000)
-
-    # Production WSGI
-    serve(app, host="0.0.0.0", port=8000)
+    test = None
+    if test is not None:
+        # Development
+        app.run(debug=True, host="0.0.0.0", port=8000)
+    else:
+        # Production WSGI
+        serve(app, host="0.0.0.0", port=8000)
