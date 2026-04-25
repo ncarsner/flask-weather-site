@@ -53,7 +53,7 @@
             <div class="forecast-card">
                 <div class="forecast-day">{{ day.day }}</div>
                 {% if day.icon %}
-                <img src="{{ url_for('static', filename=day.icon) }}" class="forecast-icon">
+                <img src="{{ url_for('static', filename=day.icon) }}" class="forecast-icon" alt="{{ day.status }} icon">
                 {% endif %}
                 <div class="forecast-status">{{ day.status }}</div>
                 <div class="forecast-temps">
