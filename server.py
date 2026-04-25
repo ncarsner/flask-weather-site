@@ -66,7 +66,7 @@ def get_weather():
 
     forecast_days = None
     forecast_data = get_five_day_forecast(city)
-    if forecast_data.get("cod") == "200":
+    if str(forecast_data.get("cod")) == "200":
         forecast_days = _process_forecast(forecast_data)
 
     status = weather_data["weather"][0]["description"].capitalize()
