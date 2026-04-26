@@ -64,12 +64,12 @@ def get_weather():
     if not weather_data["cod"] == 200:
         return render_template("city-not-found.html")
 
-    include_forecast = request.args.get("forecast") == "true"
+    forecast_list = request.args.getlist("forecast")
+    include_forecast = "true" in forecast_list if forecast_list else True
     forecast_days = None
-    if include_forecast:
-        forecast_data = get_five_day_forecast(city)
-        if str(forecast_data.get("cod")) == "200":
-            forecast_days = _process_forecast(forecast_data)
+    forecast_data = get_five_day_forecast(city)
+    if str(forecast_data.get("cod")) == "200":
+        forecast_days = _process_forecast(forecast_data)
 
     status = weather_data["weather"][0]["description"].capitalize()
     desc_path = weather_descriptions.get(status.lower(), None)
