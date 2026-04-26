@@ -28,20 +28,24 @@ def _process_forecast(forecast_data: dict) -> list[dict]:
         temps = [e["main"]["temp"] for e in entries]
         status = noon["weather"][0]["description"].capitalize()
         icon_file = weather_descriptions.get(status.lower())
-        result.append({
-            "day": datetime.strptime(date_str, "%Y-%m-%d").strftime("%A"),
-            "high": int(max(temps)),
-            "low": int(min(temps)),
-            "status": status,
-            "icon": f"images/{icon_file}" if icon_file else None,
-            "precip_chance": int(max(e.get("pop", 0) for e in entries) * 100),
-        })
+        result.append(
+            {
+                "day": datetime.strptime(date_str, "%Y-%m-%d").strftime("%A"),
+                "high": int(max(temps)),
+                "low": int(min(temps)),
+                "status": status,
+                "icon": f"images/{icon_file}" if icon_file else None,
+                "precip_chance": int(max(e.get("pop", 0) for e in entries) * 100),
+            }
+        )
     return result[:5]
 
 
 @app.route("/favicon.ico")
 def favicon():
-    return send_from_directory("static/images", "sun_yellow.ico", mimetype="image/vnd.microsoft.icon")
+    return send_from_directory(
+        "static/images", "sun_yellow.ico", mimetype="image/vnd.microsoft.icon"
+    )
 
 
 @app.route("/")
@@ -89,9 +93,10 @@ def get_weather():
 
     city = city.title()
     territory_name = (
-        provinces.us_cities.get(city) if territory == "US" else
-            provinces.territories.get(territory, None) or
-            provinces.countries.get(territory, None)
+        provinces.us_cities.get(city)
+        if territory == "US"
+        else provinces.territories.get(territory, None)
+        or provinces.countries.get(territory, None)
     )
 
     return render_template(
@@ -113,9 +118,7 @@ def get_weather():
 
 if __name__ == "__main__":
     test = None
-    if test is not None:
-        # Development
+    if test is not None:  # Development
         app.run(debug=True, host="0.0.0.0", port=8000)
-    else:
-        # Production WSGI
+    else:  # Production WSGI
         serve(app, host="0.0.0.0", port=8000)
