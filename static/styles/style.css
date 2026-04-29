@@ -112,22 +112,37 @@ button {
 }
 
 .forecast-cards {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.6rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .forecast-card {
   background-color: #444;
   border-radius: 10px;
-  padding: 0.75rem 1rem;
-  min-width: 110px;
+  padding: 0.75rem 0.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.3rem;
+  min-width: 0;
+}
+
+/* 3-2 row layout on narrow screens */
+@media (max-width: 480px) {
+  .forecast-cards {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .forecast-card:nth-child(-n+3) {
+    grid-column: span 2;
+  }
+
+  .forecast-card:nth-child(n+4) {
+    grid-column: span 3;
+  }
 }
 
 .forecast-icon {
