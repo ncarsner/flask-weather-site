@@ -30,7 +30,7 @@ def _process_forecast(forecast_data: dict) -> list[dict]:
         icon_file = weather_descriptions.get(status.lower())
         result.append(
             {
-                "day": datetime.strptime(date_str, "%Y-%m-%d").strftime("%A"),
+                "day": datetime.strptime(date_str, "%Y-%m-%d").strftime("%a"),
                 "high": int(max(temps)),
                 "low": int(min(temps)),
                 "status": status,
