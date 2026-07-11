@@ -7,3 +7,7 @@ __pycache__
 .vscode
 .pytest*
 # **.png
+
+AGENTS/
+.claude/
+ralph.sh
