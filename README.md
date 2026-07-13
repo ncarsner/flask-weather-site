@@ -9,6 +9,7 @@ This is a simple Flask web application that provides weather information for a g
 - Display details such as temperature, weather description, with helpful visual icons.
 - Conditional expressions for US states or country of city.
 - "Feels like" expressed when > 5&deg; difference from actual temperature.
+- Optional 5-day forecast, toggled via checkbox; state persists across page reloads.
 - Optimized for mobile-friendly devices.
 
 ## Requirements
@@ -16,6 +17,8 @@ This is a simple Flask web application that provides weather information for a g
 - Python >=3.9
 - Flask
 - Requests
+- python-dotenv
+- waitress
 
 ## Installation
 
@@ -34,10 +37,10 @@ This is a simple Flask web application that provides weather information for a g
 
 ## Usage
 
-1. Set up your OpenWeatherMap API key in the `.env` file.
-2. Run the Flask application:
+1. Set your OpenWeatherMap API key as `API_KEY` in the `.env` file.
+2. Run the application:
     ```bash
-    flask run
+    python server.py
     ```
 3. Open your web browser to `http://127.0.0.1:8000`
 
@@ -49,4 +52,4 @@ Contributions welcome. Please open an issue or submit a pull request for any cha
 
 - [Flask](https://flask.palletsprojects.com/)
 - [OpenWeatherMap](https://openweathermap.org/)
-- [Dave Grey](https://github.com/gitdagray/python-flask-rest-api)
+- [Dave Gray](https://github.com/gitdagray/python-flask-rest-api)
