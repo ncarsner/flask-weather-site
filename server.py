@@ -1,6 +1,8 @@
 import random
+import time
 # import sys
 
+from collections import defaultdict
 from datetime import datetime
 
 from flask import Flask, render_template, request, send_from_directory
@@ -13,6 +15,21 @@ import provinces
 
 
 app = Flask(__name__)
+
+MAX_CITY_LENGTH = 100
+RATE_LIMIT_REQUESTS = 30
+RATE_LIMIT_WINDOW_SECONDS = 60
+_request_log: dict[str, list[float]] = defaultdict(list)
+
+
+def _is_rate_limited(client_ip: str) -> bool:
+    """Allow at most RATE_LIMIT_REQUESTS per client IP within the rolling window."""
+    now = time.monotonic()
+    cutoff = now - RATE_LIMIT_WINDOW_SECONDS
+    recent = [t for t in _request_log[client_ip] if t > cutoff]
+    recent.append(now)
+    _request_log[client_ip] = recent
+    return len(recent) > RATE_LIMIT_REQUESTS
 
 
 def _process_forecast(forecast_data: dict) -> list[dict]:
@@ -56,11 +73,17 @@ def index():
 
 @app.route("/weather")
 def get_weather():
+    client_ip = request.remote_addr or "unknown"
+    if _is_rate_limited(client_ip):
+        return "Too many requests. Please slow down.", 429
+
     city = request.args.get("city")
 
     # Check for empty strings or string with only spaces
     if not city or not city.strip():
         city = random.choice(cities.world_cities)
+    elif len(city) > MAX_CITY_LENGTH:
+        return render_template("city-not-found.html"), 400
 
     weather_data = get_current_weather(city)
 

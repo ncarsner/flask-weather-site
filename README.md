@@ -11,6 +11,7 @@ This is a simple Flask web application that provides weather information for a g
 - "Feels like" expressed when > 5&deg; difference from actual temperature.
 - Optional 5-day forecast, toggled via checkbox; state persists across page reloads.
 - Optimized for mobile-friendly devices.
+- Basic abuse protection: per-IP rate limiting and city input length validation on `/weather`.
 
 ## Requirements
 

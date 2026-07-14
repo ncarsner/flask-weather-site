@@ -11,14 +11,16 @@ load_dotenv()
 
 
 def get_current_weather(city=random.choice(cities.world_cities)):
-    request_url = f'http://api.openweathermap.org/data/2.5/weather?appid={os.getenv("API_KEY")}&q={city}&units=imperial'
-    weather_data = requests.get(request_url).json()
+    request_url = "https://api.openweathermap.org/data/2.5/weather"
+    params = {"appid": os.getenv("API_KEY"), "q": city, "units": "imperial"}
+    weather_data = requests.get(request_url, params=params).json()
     return weather_data
 
 
 def get_five_day_forecast(city=random.choice(cities.world_cities)):
-    request_url = f'http://api.openweathermap.org/data/2.5/forecast?appid={os.getenv("API_KEY")}&q={city}&units=imperial'
-    forecast_data = requests.get(request_url).json()
+    request_url = "https://api.openweathermap.org/data/2.5/forecast"
+    params = {"appid": os.getenv("API_KEY"), "q": city, "units": "imperial"}
+    forecast_data = requests.get(request_url, params=params).json()
     return forecast_data
 
 
