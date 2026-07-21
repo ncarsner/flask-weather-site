@@ -148,7 +148,6 @@ cities = {
         "Porto Alegre",
         "Recife",
         "Rio de Janeiro",
-        "San Salvador",
         "Santiago",
         "São Paulo",
     ],
