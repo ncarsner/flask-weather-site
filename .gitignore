@@ -11,3 +11,4 @@ __pycache__
 AGENTS/
 .claude/
 ralph.sh
+*-session.md
