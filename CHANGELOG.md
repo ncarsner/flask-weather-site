@@ -8,8 +8,11 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 ### Added
 - Populated CHANGELOG.md with project history
+- pytest suite covering `server.py`, `weather.py`, `functions.py`, and the static data modules, with mocked HTTP calls and 100% coverage on tested modules
 ### Changed
 - Corrected README.md setup instructions and feature list
+### Fixed
+- Removed "San Salvador" duplicate entry incorrectly listed under South America in `cities.py`
 
 ## [0.2.1] - 2026-04-30
 ### Fixed
