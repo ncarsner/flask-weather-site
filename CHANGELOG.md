@@ -12,6 +12,7 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Corrected README.md setup instructions and feature list
 - OpenWeatherMap requests now use encoded query params over HTTPS instead of raw f-string URLs
+- `.gitignore` now excludes coverage.py output (`.coverage`, `.coverage.*`, `htmlcov/`)
 ### Fixed
 - Uniform forecast card height regardless of status text length
 - Forecast toggle touch target now meets WCAG 2.1 AA 44x44px minimum
